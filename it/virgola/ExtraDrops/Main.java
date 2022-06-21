@@ -24,6 +24,7 @@ public class Main extends JavaPlugin implements Listener {
         Config();
         Bukkit.getPluginManager().registerEvents(new GeneralEvents(),this);
         getCommand("extradrops").setExecutor(this);
+        new Metrics(this, 15536);
     }
     public void onDisable() {
         GeneralEvents.enabled = false;
@@ -93,10 +94,20 @@ public class Main extends JavaPlugin implements Listener {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("Messages.Errors.not-player-execution-message")));
                 }
             } else {
-                for (String str1 : getConfig().getStringList("Messages.help-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str1));
+                if (sender.hasPermission("extradrops.help")) {
+                    for (String str1 : getConfig().getStringList("Messages.help-message"))
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str1));
+                } else {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("Messages.Errors.not-permission-command-message")));
+                }
             }
         }else {
-            for (String str1 : getConfig().getStringList("Messages.help-message")) sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str1));
+            if (sender.hasPermission("extradrops.help")) {
+                for (String str1 : getConfig().getStringList("Messages.help-message"))
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', str1));
+            } else {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("Messages.Errors.not-permission-command-message")));
+            }
         }
         return false;
     }
