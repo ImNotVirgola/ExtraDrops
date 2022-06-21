@@ -37,7 +37,7 @@ public class GeneralEvents implements Listener {
                     }
 
                     kills_counter.get(p.getUniqueId()).put(monster.getType(), kills_counter.get(p.getUniqueId()).get(monster.getType()) + 1);
-                    if (kills_counter.get(p.getUniqueId()).get(monster.getType()) >= 3) {
+                    if (kills_counter.get(p.getUniqueId()).get(monster.getType()) >= Main.instance.getConfig().getInt("Options.mobs-kill-drop-number")) {
                         List<ItemStack> items = (List<ItemStack>) Main.instance.getConfig().getList("Monsters." + monster.getType().toString() + ".items");
                         e.getDrops().add(items.get(new Random().nextInt(items.size())));
                         kills_counter.get(p.getUniqueId()).put(monster.getType(), 0);

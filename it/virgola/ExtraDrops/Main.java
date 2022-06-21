@@ -116,6 +116,8 @@ public class Main extends JavaPlugin implements Listener {
         itemList.add(new ItemStack(Material.APPLE));
         itemList.add(new ItemStack(Material.GOLDEN_APPLE));
 
+        getConfig().addDefault("Options.mobs-kill-drop-number", 3);
+
         getConfig().addDefault("Monsters.ZOMBIE.items", itemList);
 
         getConfig().addDefault("Messages.help-message", help);
