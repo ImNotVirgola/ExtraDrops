@@ -1,0 +1,17 @@
+name: "ExtraDrops"
+main: "it.virgola.ExtraDrops.Main"
+version: "0.0.1"
+permissions:
+  extradrops.help:
+    default: not op
+  extradrops.reload:
+    default: op
+  extradrops.enable:
+    default: op
+  extradrops.disable:
+    default: op
+  extradrops.saveitem:
+    default: op
+commands:
+  extradrops:
+    aliases: ["ed"]
